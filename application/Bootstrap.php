@@ -16,4 +16,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         $config = Yaf_application::app()->getConfig();
         Yaf_Registry::set("config", $config);
     }
+    public function _initRegistry(){
+        Yaf_Registry::set('config', 'demos');
+    }
 }
