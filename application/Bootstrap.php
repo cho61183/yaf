@@ -16,7 +16,30 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         $config = Yaf_application::app()->getConfig();
         Yaf_Registry::set("config", $config);
     }
-    public function _initRegistry(){
+
+    /**
+     * 初始化全局配置.
+     */
+    public function _initRegistry()
+    {
         Yaf_Registry::set('config', 'demos');
+    }
+
+    /**
+     * 初始化路由
+     *
+     * @param Yaf_Dispatcher $dispatcher            
+     */
+    public function _initRoute(Yaf_Dispatcher $dispatcher)
+    {
+        /**
+         * 添加一个路由
+         */
+        $route = new Yaf_Route_Rewrite("/login/list/:idss/", array(
+            "controller" => "login",
+            "action" => "list"
+        ));
+        $router = Yaf_Dispatcher::getInstance()->getRouter();
+        $router->addRoute('dummy', $route);
     }
 }
